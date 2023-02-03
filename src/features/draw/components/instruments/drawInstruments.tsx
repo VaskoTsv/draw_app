@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   PenTool as PenToolIcon,
@@ -40,24 +40,13 @@ const INSTRUMENTS = [
 ];
 
 const DrawInstruments: React.FC = () => {
-  const [activeInstrument, setActiveInstrument] = useState<InstrumentsEnum>(InstrumentsEnum.Pen);
-
-  const handleSelectInstrument = (index: InstrumentsEnum) => {
-    if (activeInstrument === index) {
-      return;
-    }
-    setActiveInstrument(index);
-  };
-
   return (
     <>
       {INSTRUMENTS.map((instrument) => (
         <DrawInstrument
           key={instrument.index}
-          activeInstrument={activeInstrument}
           instrumentIndex={instrument.index}
           Icon={instrument.icon}
-          handleSelectInstrument={() => handleSelectInstrument(instrument.index)}
         />
       ))}
     </>
