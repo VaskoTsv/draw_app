@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
-import Canvas from "~/components/ui/Canvas";
+import PageTemplate from "./components/ui/PageTemplate";
 
 function App() {
 	return (
 		<div className="App">
-			<Canvas />
+			<PageTemplate />
 		</div>
 	);
 }

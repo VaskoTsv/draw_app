@@ -1,7 +1,7 @@
 interface CanvasProps {}
 
 const Canvas: React.FC<CanvasProps> = () => {
-	return <div>Canvas</div>;
+	return <canvas>Canvas</canvas>;
 };
 
 export default Canvas;
