@@ -1,7 +1,7 @@
+import React from 'react';
+
 interface ConfirmationDialogProps {}
 
-const ConfirmationDialog: React.FC<ConfirmationDialogProps> = () => {
-	return <div>ConfirmationDialog</div>;
-};
+const ConfirmationDialog: React.FC<ConfirmationDialogProps> = () => <div>ConfirmationDialog</div>;
 
 export default ConfirmationDialog;

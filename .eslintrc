@@ -1,0 +1,17 @@
+{
+  "extends": ["airbnb", "airbnb-typescript", "prettier"],
+  "plugins": [
+    "import",
+    "react",
+    "jsx-a11y",
+    "prettier"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/function-component-definition": "off",
+    "import/extensions": "off"
+  }
+}
