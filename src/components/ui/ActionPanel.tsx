@@ -11,6 +11,7 @@ import {
   ArrowUp as ArrowUpIcon,
   CornerDownLeft as CornerDownLeftIcon,
   CornerDownRight as CornerDownRightIcon,
+  Trash2 as Trash2Icon,
 } from 'react-feather';
 
 interface ActionPanelProps {}
@@ -21,9 +22,9 @@ const ActionPanel: React.FC<ActionPanelProps> = () => {
   };
 
   return (
-    <header className="h-80 p-10 flex flex-row gap-3 bg-white shadow-md">
+    <header className="h-60 p-10 flex flex-row gap-3 bg-white shadow-md">
       {/* Draw Instruments */}
-      <div className="h-60 w-60 bg-gray-200 flex flex-row flex-wrap justify-center gap-3">
+      <div className="h-40 w-60 bg-gray-200 shadow-md flex flex-row flex-wrap justify-center gap-3">
         <span className="flex items-center max-h-8 m-2 p-3 bg-white hover:bg-gray-100 cursor-pointer">
           <PenToolIcon />
         </span>
@@ -44,18 +45,21 @@ const ActionPanel: React.FC<ActionPanelProps> = () => {
         </span>
       </div>
       {/* Slider */}
-      <div className="h-60 w-60 bg-gray-200 flex flex-row flex-wrap justify-center gap-3">
+      <div className="w-60 bg-gray-200 shadow-md flex flex-row flex-wrap justify-center gap-3">
         <span className="flex items-center w-full max-h-10 m-2 p-3 bg-white">
           <Slider defaultValue={50} onChange={handleSlider} />
         </span>
       </div>
       {/* Undo/Redo */}
-      <div className="h-20 w-40 bg-gray-200 flex flex-row flex-wrap justify-center items-center	gap-3">
+      <div className="w-40 bg-gray-200 shadow-md flex flex-row flex-wrap justify-center items-center	gap-3">
         <span className="flex items-center max-h-8 m-2 p-3 bg-white hover:bg-gray-100 cursor-pointer">
           <CornerDownLeftIcon />
         </span>
         <span className="flex items-center max-h-8 m-2 p-3 bg-white hover:bg-gray-100 cursor-pointer">
           <CornerDownRightIcon />
+        </span>
+        <span className="flex items-center max-h-8 m-2 p-3 bg-white hover:bg-gray-100 cursor-pointer">
+          <Trash2Icon />
         </span>
       </div>
     </header>
