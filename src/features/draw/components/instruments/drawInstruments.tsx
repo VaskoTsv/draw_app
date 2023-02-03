@@ -9,38 +9,37 @@ import {
   ArrowUp as ArrowUpIcon,
 } from 'react-feather';
 
-import InstrumentsEnum from '../../interfaces/instruments.interface';
+import DrawInstrumentsEnum from '../../interfaces/instruments.interface';
 import DrawInstrument from './drawInstrument';
 
 const INSTRUMENTS = [
   {
-    index: InstrumentsEnum.Pen,
+    index: DrawInstrumentsEnum.Pen,
     icon: PenToolIcon,
   },
   {
-    index: InstrumentsEnum.Square,
+    index: DrawInstrumentsEnum.Square,
     icon: SquareIcon,
   },
   {
-    index: InstrumentsEnum.Circle,
+    index: DrawInstrumentsEnum.Circle,
     icon: CircleIcon,
   },
   {
-    index: InstrumentsEnum.LeftArrow,
+    index: DrawInstrumentsEnum.LeftArrow,
     icon: ArrowLeftIcon,
   },
   {
-    index: InstrumentsEnum.RightArrow,
+    index: DrawInstrumentsEnum.RightArrow,
     icon: ArrowRightIcon,
   },
   {
-    index: InstrumentsEnum.TopArrow,
+    index: DrawInstrumentsEnum.TopArrow,
     icon: ArrowUpIcon,
   },
 ];
 
-const DrawInstruments: React.FC = () => {
-  return (
+const DrawInstruments: React.FC = () => (
     <>
       {INSTRUMENTS.map((instrument) => (
         <DrawInstrument
@@ -51,6 +50,5 @@ const DrawInstruments: React.FC = () => {
       ))}
     </>
   );
-};
 
 export default DrawInstruments;

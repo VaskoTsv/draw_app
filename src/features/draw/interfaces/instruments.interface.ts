@@ -1,4 +1,4 @@
-enum InstrumentsEnum {
+enum DrawInstrumentsEnum {
   Pen = 0,
   Square = 1,
   Circle = 2,
@@ -7,4 +7,4 @@ enum InstrumentsEnum {
   TopArrow = 5,
 }
 
-export default InstrumentsEnum;
+export default DrawInstrumentsEnum;

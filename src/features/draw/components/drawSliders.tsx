@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { observer } from 'mobx-react-lite';
 import Slider from 'rc-slider';
+import appStore from '~/store';
+
 import 'rc-slider/assets/index.css';
 
-interface DrawSlidersProps {}
-
-const DrawSliders: React.FC<DrawSlidersProps> = () => {
-  const [stroke, setStroke] = useState(50);
-
-  const handleStrokeSlider = (sliderValue: number | number[]) => {
-    setStroke(sliderValue as number);
-  };
-
-  return (
-    <span className="flex flex-col items-center w-full max-h-20 m-2 p-3 bg-white">
-      <p>Stroke</p>
-      <Slider defaultValue={stroke} onChange={handleStrokeSlider} />
-    </span>
-  );
-};
+const DrawSliders: React.FC = observer(() => (
+  <span className="flex flex-col items-center w-full max-h-20 m-2 p-3 bg-white">
+    <p>Stroke</p>
+    <Slider
+      defaultValue={appStore.drawStore.strokeWidth}
+      onChange={appStore.drawStore.setStrokeWidth}
+    />
+    {/* TODO: Add slider for size maybe */}
+  </span>
+));
 
 export default DrawSliders;

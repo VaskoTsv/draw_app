@@ -1,3 +1,3 @@
-import UndoRedoActions from './components/undoRedo';
+import UndoRedoActions from './components/UndoRedoActions';
 
 export default UndoRedoActions;

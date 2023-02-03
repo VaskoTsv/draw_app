@@ -1,24 +1,32 @@
 import { makeAutoObservable, observable } from 'mobx';
-import InstrumentsEnum from '~/features/draw/interfaces/instruments.interface';
+
+import DrawInstrumentsEnum from '~/features/draw/interfaces/instruments.interface';
 
 class DrawStore {
-  activeInstrument = InstrumentsEnum.Pen;
+  drawInstrument = DrawInstrumentsEnum.Pen;
+
+  strokeWidth = 50;
 
   constructor() {
     makeAutoObservable(
       this,
       {
-        activeInstrument: observable,
+        drawInstrument: observable,
+        strokeWidth: observable,
       },
       { autoBind: true },
     );
   }
 
-  setActiveInstrument(instrumentIndex: InstrumentsEnum) {
-    if (this.activeInstrument === instrumentIndex) {
+  setDrawInstrument(instrumentIndex: DrawInstrumentsEnum) {
+    if (this.drawInstrument === instrumentIndex) {
       return;
     }
-    this.activeInstrument = instrumentIndex;
+    this.drawInstrument = instrumentIndex;
+  }
+
+  setStrokeWidth(width: number | number[]) {
+    this.strokeWidth = width as number;
   }
 }
 
