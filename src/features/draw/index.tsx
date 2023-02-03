@@ -1,4 +1,4 @@
-import DrawInstruments from './components/instruments';
-import DrawSliders from './components/sliders';
+import DrawInstruments from './components/instruments/drawInstruments';
+import DrawSliders from './components/drawSliders';
 
 export { DrawInstruments, DrawSliders };

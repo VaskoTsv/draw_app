@@ -12,12 +12,10 @@ const DrawSliders: React.FC<DrawSlidersProps> = () => {
   };
 
   return (
-    <div className="w-60 bg-gray-200 shadow-md flex flex-row flex-wrap justify-center gap-3">
-      <span className="flex flex-col items-center w-full max-h-20 m-2 p-3 bg-white">
-        <p>Stroke</p>
-        <Slider defaultValue={stroke} onChange={handleStrokeSlider} />
-      </span>
-    </div>
+    <span className="flex flex-col items-center w-full max-h-20 m-2 p-3 bg-white">
+      <p>Stroke</p>
+      <Slider defaultValue={stroke} onChange={handleStrokeSlider} />
+    </span>
   );
 };
 
