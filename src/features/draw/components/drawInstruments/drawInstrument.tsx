@@ -3,7 +3,7 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { Icon as FeatherIcon } from 'react-feather';
 import appStore from '~/store';
-import { DrawInstrumentsEnum } from '../../interfaces/instruments.interface';
+import { DrawInstrumentsEnum } from '../../interfaces/drawInstruments.interface';
 
 interface DrawInstrumentProps {
   instrumentIndex: DrawInstrumentsEnum;

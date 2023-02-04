@@ -8,9 +8,9 @@ import {
   PenTool as PenToolIcon,
   Square as SquareIcon,
 } from 'react-feather';
-import { DrawInstrumentConfig, DrawInstrumentsEnum } from '../../interfaces/instruments.interface';
+import { DrawInstrumentConfig, DrawInstrumentsEnum } from '../../interfaces/drawInstruments.interface';
 
-import DrawInstrument from './instrument';
+import DrawInstrument from './drawInstrument';
 
 const INSTRUMENTS: DrawInstrumentConfig[] = [
   {

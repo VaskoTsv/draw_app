@@ -1,6 +1,9 @@
 import { makeAutoObservable, observable } from 'mobx';
 
-import { DrawInstrumentsEnum } from '~/features/draw/interfaces/instruments.interface';
+import { DrawFactoryService } from '~/features/draw';
+
+import { DrawInstrumentsEnum } from '~/features/draw/interfaces/drawInstruments.interface';
+import IDrawService from '~/features/draw/interfaces/drawService.interface';
 
 class DrawStore {
   canvas: HTMLCanvasElement | null = null;
@@ -13,7 +16,12 @@ class DrawStore {
 
   strokeWidth = 5;
 
-  constructor() {
+  // External service responsible for drawing of different types of shapes
+  drawFactoryService: DrawFactoryService;
+
+  drawService: IDrawService | undefined;
+
+  constructor(drawFactoryService: DrawFactoryService) {
     makeAutoObservable(
       this,
       {
@@ -25,6 +33,15 @@ class DrawStore {
       },
       { autoBind: true },
     );
+    this.drawFactoryService = drawFactoryService;
+  }
+
+  initDrawService() {
+    this.drawFactoryService?.initDrawerFactory(
+      this.drawInstrument,
+      this.context as CanvasRenderingContext2D,
+    );
+    this.drawService = this.drawFactoryService.createDrawService();
   }
 
   setDrawInstrument(instrumentIndex: DrawInstrumentsEnum) {
@@ -32,6 +49,7 @@ class DrawStore {
       return;
     }
     this.drawInstrument = instrumentIndex;
+    this.initDrawService();
   }
 
   setStrokeWidth(width: number | number[]) {
@@ -52,55 +70,27 @@ class DrawStore {
     this.context.lineCap = 'round';
     this.context.strokeStyle = 'black';
     this.context.lineWidth = this.strokeWidth;
+
+    this.initDrawService();
   }
 
-  startDrawing({ nativeEvent }: React.MouseEvent) {
-    const { offsetX, offsetY } = nativeEvent;
-
-    if (this.drawInstrument === DrawInstrumentsEnum.Pen) {
-      this.context?.beginPath();
-      this.context?.moveTo(offsetX, offsetY);
-    }
-
-    if (this.drawInstrument === DrawInstrumentsEnum.Circle) {
-      this.context?.beginPath();
-      this.context?.arc(offsetX, offsetY, 150, 0, 2 * Math.PI);
-      this.context?.stroke();
-    }
-
-    if (this.drawInstrument === DrawInstrumentsEnum.Square) {
-      this.context?.strokeRect(offsetX, offsetY, 300, 300);
-      this.finishDrawing();
-      return;
-    }
-
+  startDrawing(event: React.MouseEvent) {
+    this.drawService?.startDrawing(event);
     this.isDrawing = true;
   }
 
   finishDrawing() {
-    this.context?.closePath();
+    if (this.drawService?.finishDrawing) {
+      this.drawService.finishDrawing();
+    }
     this.isDrawing = false;
   }
 
-  draw({ nativeEvent }: React.MouseEvent) {
-    if (!this.isDrawing || !this.context) {
+  draw(event: React.MouseEvent) {
+    if (!this.isDrawing || !this.drawService?.draw) {
       return;
     }
-
-    const { offsetX, offsetY } = nativeEvent;
-
-    if (this.drawInstrument === DrawInstrumentsEnum.Square) {
-      return;
-    }
-
-    if (this.drawInstrument === DrawInstrumentsEnum.Circle) {
-      return;
-    }
-
-    if (this.drawInstrument === DrawInstrumentsEnum.Pen) {
-      this.context?.lineTo(offsetX, offsetY);
-      this.context?.stroke();
-    }
+    this.drawService.draw(event);
   }
 
   clearCanvas() {
@@ -113,5 +103,6 @@ class DrawStore {
   }
 }
 
-const drawStore = new DrawStore();
+const drawFactoryService = new DrawFactoryService();
+const drawStore = new DrawStore(drawFactoryService);
 export default drawStore;
