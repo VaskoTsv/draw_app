@@ -10,6 +10,8 @@ const DrawSliders: React.FC = observer(() => (
   <span className="flex flex-col items-center w-full max-h-20 m-2 p-3 bg-white">
     <p>Stroke</p>
     <Slider
+      min={1}
+      max={50}
       defaultValue={appStore.drawStore.strokeWidth}
       onChange={appStore.drawStore.setStrokeWidth}
     />

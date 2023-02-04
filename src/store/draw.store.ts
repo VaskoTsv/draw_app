@@ -11,7 +11,7 @@ class DrawStore {
 
   drawInstrument = DrawInstrumentsEnum.Pen;
 
-  strokeWidth = 1;
+  strokeWidth = 5;
 
   constructor() {
     makeAutoObservable(
@@ -36,6 +36,10 @@ class DrawStore {
 
   setStrokeWidth(width: number | number[]) {
     this.strokeWidth = width as number;
+    if (!this.context) {
+      return;
+    }
+    this.context.lineWidth = this.strokeWidth;
   }
 
   setCanvas(canvasElement: HTMLCanvasElement) {

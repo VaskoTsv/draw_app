@@ -13,7 +13,7 @@ const Canvas: React.FC<CanvasProps> = observer(() => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center m-2 border-1 border-gray-400">
+    <div className="flex items-center justify-center">
       <canvas
         className="h-full w-full bg-white shadow-md"
         ref={canvasRef}
