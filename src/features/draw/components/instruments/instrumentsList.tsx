@@ -10,7 +10,7 @@ import {
 } from 'react-feather';
 
 import DrawInstrumentsEnum from '../../interfaces/instruments.interface';
-import DrawInstrument from './drawInstrument';
+import DrawInstrument from './instrument';
 
 const INSTRUMENTS = [
   {
