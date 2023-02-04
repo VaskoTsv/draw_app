@@ -56,8 +56,18 @@ class DrawStore {
 
   startDrawing({ nativeEvent }: React.MouseEvent) {
     const { offsetX, offsetY } = nativeEvent;
-    this.context?.beginPath();
-    this.context?.moveTo(offsetX, offsetY);
+
+    if (this.drawInstrument === DrawInstrumentsEnum.Pen) {
+      this.context?.beginPath();
+      this.context?.moveTo(offsetX, offsetY);
+    }
+
+    if (this.drawInstrument === DrawInstrumentsEnum.Square) {
+      this.context?.strokeRect(offsetX, offsetY, 300, 300);
+      this.finishDrawing();
+      return;
+    }
+
     this.isDrawing = true;
   }
 
@@ -67,12 +77,20 @@ class DrawStore {
   }
 
   draw({ nativeEvent }: React.MouseEvent) {
-    if (!this.isDrawing) {
+    if (!this.isDrawing || !this.context) {
       return;
     }
+
     const { offsetX, offsetY } = nativeEvent;
-    this.context?.lineTo(offsetX, offsetY);
-    this.context?.stroke();
+
+    if (this.drawInstrument === DrawInstrumentsEnum.Square) {
+      return;
+    }
+
+    if (this.drawInstrument === DrawInstrumentsEnum.Pen) {
+      this.context?.lineTo(offsetX, offsetY);
+      this.context?.stroke();
+    }
   }
 
   clearCanvas() {
