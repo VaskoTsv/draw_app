@@ -1,3 +1,5 @@
+import { Icon } from 'react-feather';
+
 enum DrawInstrumentsEnum {
   Pen = 0,
   Square = 1,
@@ -7,4 +9,10 @@ enum DrawInstrumentsEnum {
   TopArrow = 5,
 }
 
-export default DrawInstrumentsEnum;
+interface DrawInstrumentConfig {
+  index: DrawInstrumentsEnum;
+  icon: Icon;
+  disabled: boolean;
+}
+
+export { DrawInstrumentsEnum, DrawInstrumentConfig };

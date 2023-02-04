@@ -1,9 +1,9 @@
 import React from 'react';
 
-import appStore from '~/store';
 import { observer } from 'mobx-react-lite';
 
 import { Trash2 as Trash2Icon } from 'react-feather';
+import appStore from '~/store';
 
 import { DrawInstruments, DrawSliders } from '~/features/draw/index';
 import UndoRedoActions from '~/features/undoRedo/index';

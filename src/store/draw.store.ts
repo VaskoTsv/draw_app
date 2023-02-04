@@ -1,6 +1,6 @@
 import { makeAutoObservable, observable } from 'mobx';
 
-import DrawInstrumentsEnum from '~/features/draw/interfaces/instruments.interface';
+import { DrawInstrumentsEnum } from '~/features/draw/interfaces/instruments.interface';
 
 class DrawStore {
   canvas: HTMLCanvasElement | null = null;
@@ -62,6 +62,12 @@ class DrawStore {
       this.context?.moveTo(offsetX, offsetY);
     }
 
+    if (this.drawInstrument === DrawInstrumentsEnum.Circle) {
+      this.context?.beginPath();
+      this.context?.arc(offsetX, offsetY, 150, 0, 2 * Math.PI);
+      this.context?.stroke();
+    }
+
     if (this.drawInstrument === DrawInstrumentsEnum.Square) {
       this.context?.strokeRect(offsetX, offsetY, 300, 300);
       this.finishDrawing();
@@ -84,6 +90,10 @@ class DrawStore {
     const { offsetX, offsetY } = nativeEvent;
 
     if (this.drawInstrument === DrawInstrumentsEnum.Square) {
+      return;
+    }
+
+    if (this.drawInstrument === DrawInstrumentsEnum.Circle) {
       return;
     }
 
