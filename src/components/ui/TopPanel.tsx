@@ -6,7 +6,7 @@ import { Trash2 as Trash2Icon } from 'react-feather';
 import appStore from '~/store';
 
 import { DrawInstruments, DrawSliders } from '~/features/draw/index';
-import UndoRedoActions from '~/features/undoRedo/index';
+import UndoRedoActions from '~/features/undoRedo/components/undoRedo';
 
 interface TopPanelProps {}
 
