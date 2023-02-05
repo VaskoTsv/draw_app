@@ -1,4 +1,4 @@
-import UndoRedoService from './services/undoRedo.service';
+import UndoRedoActionService from './services/undoRedoAction.service';
 import UndoRedoActions from './components/undoRedo';
 
-export default { UndoRedoActions, UndoRedoService };
+export default { UndoRedoActions, UndoRedoActionService };

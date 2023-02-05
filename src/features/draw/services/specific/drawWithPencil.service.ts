@@ -13,14 +13,14 @@ class DrawWithPencilService implements IDrawService {
     this.context.moveTo(offsetX, offsetY);
   }
 
-  finishDrawing() {
-    this.context.closePath();
-  }
-
   draw({ nativeEvent }: React.MouseEvent) {
     const { offsetX, offsetY } = nativeEvent;
     this.context.lineTo(offsetX, offsetY);
     this.context.stroke();
+  }
+
+  finishDrawing() {
+    this.context.closePath();
   }
 }
 

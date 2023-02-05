@@ -5,6 +5,8 @@ import DrawSquareService from './specific/drawSquare.service';
 import DrawWithPencilService from './specific/drawWithPencil.service';
 
 class DrawFactoryService {
+  drawService: DrawWithPencilService | DrawSquareService | DrawCircleService | undefined;
+
   instrumentType: DrawInstrumentsEnum | null;
 
   context: CanvasRenderingContext2D | null;
@@ -17,6 +19,7 @@ class DrawFactoryService {
   initDrawerFactory(type: DrawInstrumentsEnum, context: CanvasRenderingContext2D) {
     this.instrumentType = type;
     this.context = context;
+    this.drawService = this.createDrawService();
   }
 
   createDrawService() {

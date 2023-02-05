@@ -11,6 +11,13 @@ class DrawSquareService implements IDrawService {
     const { offsetX, offsetY } = nativeEvent;
     this.context.strokeRect(offsetX, offsetY, 300, 300);
   }
+
+  // Note: Bad practice to implement not needed functions
+  // but it's better than having to do multiple checks if
+  // they exist in draw.store.ts
+  draw() {}
+
+  finishDrawing() {}
 }
 
 export default DrawSquareService;
