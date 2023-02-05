@@ -2,7 +2,7 @@ import { makeAutoObservable, observable } from 'mobx';
 
 import { DrawInstrumentsEnum } from '~/features/draw/interfaces/drawInstruments.interface';
 import DrawFactoryService from '~/features/draw/services/drawFactory.service';
-import UndoRedoActionService from '~/features/undoRedo/services/undoRedoAction.service';
+import UndoRedoActionService from '~/features/undoRedo/undoRedoAction.service';
 
 class DrawStore {
   canvas: HTMLCanvasElement | null = null;
