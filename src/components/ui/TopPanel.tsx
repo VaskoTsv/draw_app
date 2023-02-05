@@ -2,11 +2,10 @@ import React from 'react';
 
 import { observer } from 'mobx-react-lite';
 
-import { Trash2 as Trash2Icon } from 'react-feather';
-import appStore from '~/store';
-
-import { DrawInstruments, DrawSliders } from '~/features/draw/index';
-import UndoRedoActions from '~/features/undoRedo/components/undoRedo';
+import UndoRedoActions from '~/features/undoRedo/components/undoRedoActions';
+import ClearCanvas from '~/features/clearCanvas/components/ClearCanvas';
+import DrawInstruments from '~/features/draw/components/drawInstruments/drawInstrumentsList';
+import DrawSliders from '~/features/draw/components/drawSliders';
 
 interface TopPanelProps {}
 
@@ -18,15 +17,9 @@ const TopPanel: React.FC<TopPanelProps> = observer(() => (
     <div className="w-60 bg-gray-200 shadow-md flex flex-row flex-wrap justify-center gap-3">
       <DrawSliders />
     </div>
-    <div className="w-40 bg-gray-200 shadow-md flex flex-row flex-wrap justify-center items-center	gap-3">
+    <div className="w-40 bg-gray-200 shadow-md flex flex-row flex-wrap justify-center items-center gap-3">
       <UndoRedoActions />
-      {/* TODO: move clear canvas to own feature or the draw feature later */}
-      <span
-        className="flex items-center max-h-8 m-2 p-3 bg-white hover:bg-gray-100 cursor-pointer"
-        onClick={appStore.drawStore.clearCanvas}
-      >
-        <Trash2Icon />
-      </span>
+      <ClearCanvas />
     </div>
   </header>
 ));

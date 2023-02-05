@@ -1,7 +1,7 @@
 import { makeAutoObservable, observable } from 'mobx';
 
-import { DrawFactoryService } from '~/features/draw';
 import { DrawInstrumentsEnum } from '~/features/draw/interfaces/drawInstruments.interface';
+import DrawFactoryService from '~/features/draw/services/drawFactory.service';
 import UndoRedoActionService from '~/features/undoRedo/services/undoRedoAction.service';
 
 class DrawStore {
@@ -122,15 +122,18 @@ class DrawStore {
     this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
-  undo() {
+  undoAction() {
     this.undoRedoActionService.undo();
   }
 
-  redo() {
+  redoAction() {
     this.undoRedoActionService.redo();
   }
 }
 
 // TODO: Introduce IOC and inject services wherever they are needed
-const drawStore = new DrawStore(new DrawFactoryService(), new UndoRedoActionService());
+const drawFactoryService = new DrawFactoryService();
+const undoRedoActionService = new UndoRedoActionService();
+
+const drawStore = new DrawStore(drawFactoryService, undoRedoActionService);
 export default drawStore;
