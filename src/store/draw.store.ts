@@ -1,4 +1,6 @@
+import { container } from 'tsyringe';
 import { makeAutoObservable, observable } from 'mobx';
+import { IMessageService, MessageService } from '~/lib/message.service';
 
 import { DrawInstrumentsEnum } from '~/features/draw/interfaces/drawInstruments.interface';
 import DrawFactoryService from '~/features/draw/services/drawFactory.service';
@@ -19,6 +21,8 @@ class DrawStore {
 
   undoRedoActionService: UndoRedoActionService;
 
+  test: IMessageService | undefined;
+
   constructor(drawFactoryService: DrawFactoryService, undoRedoService: UndoRedoActionService) {
     makeAutoObservable(
       this,
@@ -31,6 +35,9 @@ class DrawStore {
       },
       { autoBind: true },
     );
+
+    this.test = container.resolve<IMessageService>(MessageService);
+    console.log('message service injected from store', this.test.getMessage());
 
     this.drawFactory = drawFactoryService;
     this.undoRedoActionService = undoRedoService;
