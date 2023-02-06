@@ -7,9 +7,7 @@ import ClearCanvas from '~/features/clearCanvas/components/ClearCanvas';
 import DrawInstruments from '~/features/draw/components/drawInstruments/drawInstrumentsList';
 import DrawSliders from '~/features/draw/components/drawSliders';
 
-interface TopPanelProps {}
-
-const TopPanel: React.FC<TopPanelProps> = observer(() => (
+const TopPanel: React.FC = observer(() => (
   <header className="h-60 p-10 flex flex-row gap-3 bg-white shadow-md">
     <div className="h-40 w-60 bg-gray-200 shadow-md flex flex-row flex-wrap justify-center gap-3">
       <DrawInstruments />

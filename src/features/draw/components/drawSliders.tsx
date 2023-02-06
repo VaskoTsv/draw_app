@@ -13,9 +13,9 @@ const DrawSliders: React.FC = observer(() => (
       min={1}
       max={50}
       defaultValue={appStore.drawStore.strokeWidth}
-      onChange={appStore.drawStore.setStrokeWidth}
+      onChange={(value) => appStore.drawStore.setStrokeWidth(value as number)}
     />
-    {/* TODO: Add slider for size maybe */}
+    {/* TODO: Add slider for size maybe?? */}
   </span>
 ));
 
