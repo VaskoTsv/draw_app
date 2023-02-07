@@ -25,8 +25,10 @@ class DrawFactoryService implements IDrawFactoryService {
       this.service = new DrawSquareService(context);
     } else if (drawInstrument === DrawInstrumentsEnum.Circle) {
       this.service = new DrawCircleService(context);
-    } else if (!this.service) {
-      throw new Error('Error: No draw service was initialized!');
+    } else {
+      throw new Error(
+        'Error: No draw service was found for the currently selected drawInstrument!',
+      );
     }
   }
 }

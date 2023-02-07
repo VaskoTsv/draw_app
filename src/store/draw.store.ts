@@ -1,12 +1,12 @@
-import { container } from 'tsyringe';
 import { makeAutoObservable, observable } from 'mobx';
+import { container } from 'tsyringe';
 
 import { DrawInstrumentsEnum } from '~/features/draw/interfaces/drawInstruments.interface';
-import { IUndoRedoService, UndoRedoService } from '~/features/undoRedo/services/undoRedo.service';
+import { IUndoRedoService, UndoRedoService } from '~/features/undoRedo/undoRedo.service';
 import {
   ClearCanvasService,
   IClearCanvasService,
-} from '~/features/clearCanvas/services/clearCanvas.service';
+} from '~/features/clearCanvas/clearCanvas.service';
 import { DrawFactoryService, IDrawFactoryService } from '~/features/draw/services/draw.service';
 
 class DrawStore {
@@ -71,7 +71,7 @@ class DrawStore {
     this.context.lineWidth = this.strokeWidth;
   }
 
-  // Drawing related service
+  // Drawing service
   startDrawing(event: React.MouseEvent) {
     if (!this.canvas || !this.context) {
       return;
@@ -92,7 +92,7 @@ class DrawStore {
     }
   }
 
-  // Undo/Redo related service
+  // Undo/Redo service
   undoAction() {
     if (!this.canvas || !this.context) {
       return;
@@ -107,7 +107,7 @@ class DrawStore {
     this.undoRedoActionService.redo(this.canvas, this.context);
   }
 
-  // Clear canvas related service
+  // Clear canvas service
   clearCanvas() {
     if (!this.canvas || !this.context) {
       return;

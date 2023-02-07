@@ -7,8 +7,7 @@ import {
 } from 'react-feather';
 import appStore from '~/store';
 
-
-const UndoRedoActions: React.FC = observer(() => (
+const UndoRedoButtons: React.FC = observer(() => (
   <>
     <span className="flex items-center max-h-8 m-2 p-3 bg-white hover:bg-gray-100 cursor-pointer">
       <CornerDownLeftIcon onClick={appStore.drawStore.undoAction} />
@@ -19,4 +18,4 @@ const UndoRedoActions: React.FC = observer(() => (
   </>
 ));
 
-export default UndoRedoActions;
+export default UndoRedoButtons;

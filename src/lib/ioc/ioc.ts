@@ -9,12 +9,12 @@ import {
   IUndoRedoService,
   UndoRedoService,
   UndoRedoSymbol,
-} from '~/features/undoRedo/services/undoRedo.service';
+} from '~/features/undoRedo/undoRedo.service';
 import {
   ClearCanvasService,
   ClearCanvasSymbol,
   IClearCanvasService,
-} from '~/features/clearCanvas/services/clearCanvas.service';
+} from '~/features/clearCanvas/clearCanvas.service';
 
 export function setup() {
   container.register<IDrawFactoryService>(DrawFactoryServiceSymbol, DrawFactoryService);

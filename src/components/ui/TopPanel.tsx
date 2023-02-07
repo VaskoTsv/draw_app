@@ -2,8 +2,8 @@ import React from 'react';
 
 import { observer } from 'mobx-react-lite';
 
-import UndoRedoActions from '~/features/undoRedo/components/undoRedoActions';
-import ClearCanvas from '~/features/clearCanvas/components/ClearCanvas';
+import UndoRedoButtons from '~/features/undoRedo/undoRedoButtons';
+import ClearCanvasButton from '~/features/clearCanvas/clearCanvasButton';
 import DrawInstruments from '~/features/draw/components/drawInstruments/drawInstrumentsList';
 import DrawSliders from '~/features/draw/components/drawSliders';
 
@@ -16,8 +16,8 @@ const TopPanel: React.FC = observer(() => (
       <DrawSliders />
     </div>
     <div className="w-40 bg-gray-200 shadow-md flex flex-row flex-wrap justify-center items-center gap-3">
-      <UndoRedoActions />
-      <ClearCanvas />
+      <UndoRedoButtons />
+      <ClearCanvasButton />
     </div>
   </header>
 ));
