@@ -55,6 +55,10 @@ class DrawStore {
     this.drawFactory.initService(this.context, this.drawInstrument);
   }
 
+  isCanvasExists(): boolean {
+    return Boolean(this.canvas && this.context);
+  }
+
   setDrawInstrument(instrumentIndex: DrawInstrumentsEnum) {
     if (this.drawInstrument === instrumentIndex || !this.context) {
       return;
@@ -73,10 +77,10 @@ class DrawStore {
 
   // Drawing service
   startDrawing(event: React.MouseEvent) {
-    if (!this.canvas || !this.context) {
+    if (!this.isCanvasExists()) {
       return;
     }
-    this.undoRedoActionService.storeCanvas(this.canvas);
+    this.undoRedoActionService.storeCanvas(this.canvas!);
     this.drawFactory.service?.startDrawing(event);
   }
 
@@ -94,25 +98,25 @@ class DrawStore {
 
   // Undo/Redo service
   undoAction() {
-    if (!this.canvas || !this.context) {
+    if (!this.isCanvasExists()) {
       return;
     }
-    this.undoRedoActionService.undo(this.canvas, this.context);
+    this.undoRedoActionService.undo(this.canvas!, this.context!);
   }
 
   redoAction() {
-    if (!this.canvas || !this.context) {
+    if (!this.isCanvasExists()) {
       return;
     }
-    this.undoRedoActionService.redo(this.canvas, this.context);
+    this.undoRedoActionService.redo(this.canvas!, this.context!);
   }
 
   // Clear canvas service
   clearCanvas() {
-    if (!this.canvas || !this.context) {
+    if (!this.isCanvasExists()) {
       return;
     }
-    this.clearCanvasService.clear(this.canvas, this.context);
+    this.clearCanvasService.clear(this.canvas!, this.context!);
   }
 }
 
